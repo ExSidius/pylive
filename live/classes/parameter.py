@@ -46,8 +46,10 @@ class Parameter:
 
     def set_value(self, value):
         self.set.set_device_param(self.device.track.index, self.device.index, self.index, value)
+
     def get_value(self):
         return self.device.track.set.get_device_param(self.device.track.index, self.device.index, self.index)
+
     value = property(get_value, set_value)
 
     def randomise(self):
