@@ -110,6 +110,12 @@ class Set:
     def get_device_parameters_max(self, track_index, device_index):
         return self.live.query("/live/device/get/parameters/max", (track_index, device_index))
 
+    def set_device_param(self, track_index, device_index, parameter_index, value):
+        return self.live.query("/live/device/set/parameter/value", (track_index, device_index, parameter_index, value))
+
+    def get_device_param(self, track_index, device_index, parameter_index):
+        return self.live.query("/live/device/get/parameter/value", (track_index, device_index, parameter_index))
+
     #--------------------------------------------------------------------------------
     # SCAN
     #--------------------------------------------------------------------------------
