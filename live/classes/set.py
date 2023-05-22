@@ -99,16 +99,16 @@ class Set:
         self.scenes = []
 
     def get_device_parameters_name(self, track_index, device_index):
-        return self.live.query("/live/device/get/parameters/name", track_index, device_index)
+        return self.live.query("/live/device/get/parameters/name", (track_index, device_index))
 
     def get_device_parameters_value(self, track_index, device_index):
-        return self.live.query("/live/device/get/parameters/value", track_index, device_index)
+        return self.live.query("/live/device/get/parameters/value", (track_index, device_index))
 
     def get_device_parameters_min(self, track_index, device_index):
-        return self.live.query("/live/device/get/parameters/min", track_index, device_index)
+        return self.live.query("/live/device/get/parameters/min", (track_index, device_index))
 
     def get_device_parameters_max(self, track_index, device_index):
-        return self.live.query("/live/device/get/parameters/max", track_index, device_index)
+        return self.live.query("/live/device/get/parameters/max", (track_index, device_index))
 
     #--------------------------------------------------------------------------------
     # SCAN
