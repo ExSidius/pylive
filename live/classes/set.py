@@ -221,8 +221,6 @@ class Set:
                         index = j - 2
                         value = parameter_values[j]
                         name = parameter_names[j]
-                        print(value)
-                        print(name)
                         minimum = parameter_mins[j]
                         maximum = parameter_maxes[j]
                         param = Parameter(device, index, name, value)
