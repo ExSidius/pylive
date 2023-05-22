@@ -215,8 +215,11 @@ class Set:
                     track.devices.append(device)
                     parameter_names = self.get_device_parameters_name(track.index, device.index)
                     print(parameter_names)
+                    print(len(parameter_names))
                     parameter_names = parameter_names[2:]
                     parameter_values = self.get_device_parameters_value(track.index, device.index)
+                    print(parameter_values)
+                    print(len(parameter_values))
                     parameter_values = parameter_values[2:]
                     parameter_mins = self.get_device_parameters_min(track.index, device.index)
                     parameter_mins = parameter_mins[2:]
