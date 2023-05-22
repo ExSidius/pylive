@@ -98,14 +98,17 @@ class Set:
         self.tracks = []
         self.scenes = []
 
-    def get_device_parameters(self, track_index, device_index):
-        return self.live.query("/live/device", track_index, device_index, response_address="/live/device/allparam")
+    def get_device_parameters_name(self, track_index, device_index):
+        return self.live.query("/live/device/get/parameters/name", track_index, device_index)
 
-    def get_device_param(self, track_index, device_index, param_index):
-        return self.live.query("/live/device", track_index, device_index, param_index, response_address="/live/device/param")
+    def get_device_parameters_value(self, track_index, device_index):
+        return self.live.query("/live/device/get/parameters/value", track_index, device_index)
 
-    def get_device_parameter_ranges(self, track_index, device_index):
-        return self.live.query("/live/device/range", track_index, device_index)
+    def get_device_parameters_min(self, track_index, device_index):
+        return self.live.query("/live/device/get/parameters/min", track_index, device_index)
+
+    def get_device_parameters_max(self, track_index, device_index):
+        return self.live.query("/live/device/get/parameters/max", track_index, device_index)
 
     #--------------------------------------------------------------------------------
     # SCAN
@@ -204,16 +207,20 @@ class Set:
                     rv_index += 1
                     device = Device(track, device_index, device_name)
                     track.devices.append(device)
-                    parameters = self.get_device_parameters(track.index, device.index)
-                    parameters = parameters[2:]
-                    ranges = self.get_device_parameter_ranges(track.index, device.index)
-                    ranges = ranges[2:]
-                    for j in range(0, len(parameters), 3):
-                        index = parameters[j + 0]
-                        value = parameters[j + 1]
-                        name = parameters[j + 2]
-                        minimum = ranges[j + 1]
-                        maximum = ranges[j + 2]
+                    parameter_names = self.get_device_parameters_name(track.index, device.index)
+                    parameter_names = parameter_names[2:]
+                    parameter_values = self.get_device_parameters_value(track.index, device.index)
+                    parameter_values = parameter_values[2:]
+                    parameter_mins = self.get_device_parameters_min(track.index, device.index)
+                    parameter_mins = parameter_mins[2:]
+                    parameter_maxes = self.get_device_parameters_max(track.index, device.index)
+                    parameter_maxes = parameter_maxes[2:]
+                    for j in range(0, len(parameter_names), 3):
+                        index = j
+                        value = parameter_values[j]
+                        name = parameter_names[j]
+                        minimum = parameter_mins[j]
+                        maximum = parameter_maxes[j]
                         param = Parameter(device, index, name, value)
                         param.minimum = minimum
                         param.maximum = maximum
