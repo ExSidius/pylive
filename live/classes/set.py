@@ -217,7 +217,7 @@ class Set:
                     parameter_values = self.get_device_parameters_value(track.index, device.index)
                     parameter_mins = self.get_device_parameters_min(track.index, device.index)
                     parameter_maxes = self.get_device_parameters_max(track.index, device.index)
-                    for j in range(2, len(parameter_names) + 2):
+                    for j in range(2, len(parameter_names)):
                         index = j
                         value = parameter_values[j]
                         name = parameter_names[j]
