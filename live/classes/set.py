@@ -214,6 +214,7 @@ class Set:
                     device = Device(track, device_index, device_name)
                     track.devices.append(device)
                     parameter_names = self.get_device_parameters_name(track.index, device.index)
+                    print(parameter_names)
                     parameter_names = parameter_names[2:]
                     parameter_values = self.get_device_parameters_value(track.index, device.index)
                     parameter_values = parameter_values[2:]
